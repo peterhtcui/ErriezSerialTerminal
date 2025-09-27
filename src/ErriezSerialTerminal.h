@@ -39,12 +39,22 @@
 /*!
  * \brief Size of the serial receive buffer in bytes (Maximum length of one command plus arguments)
  */
-#define ST_RX_BUFFER_SIZE       32
+#define ST_RX_BUFFER_SIZE       256
 
 /*!
  * \brief Number of command characters
  */
-#define ST_NUM_COMMAND_CHARS    8
+#define ST_NUM_COMMAND_CHARS    12
+
+/*!
+ * \brief Maximum number of history entries
+ */
+#define ST_MAX_HISTORY_ENTRIES  20
+
+/*!
+ * \brief Maximum length of each history entry
+ */
+#define ST_HISTORY_ENTRY_SIZE   128
 
 /*!
  * \brief SerialTerminal class
@@ -66,6 +76,11 @@ public:
     char *getNext();
     char *getRemaining();
 
+    // History management functions
+    void addToHistory(const char *command);
+    void showHistory();
+    void clearHistory();
+
 private:
     struct SerialTerminalCallback {
         char command[ST_NUM_COMMAND_CHARS + 1];
@@ -84,6 +99,30 @@ private:
     void (*_postCommandHandler)(void);
 
     void (*_defaultHandler)(const char *);
+
+    // History management
+    char _history[ST_MAX_HISTORY_ENTRIES][ST_HISTORY_ENTRY_SIZE];
+    int _historyCount;
+    int _historyIndex;
+    int _currentHistoryIndex;
+    bool _inHistoryMode;
+
+    // Tab completion
+    char _tabBuffer[ST_RX_BUFFER_SIZE + 1];
+    int _tabIndex;
+    bool _tabMode;
+
+    // Helper functions
+    void handleSpecialKeys(char c);
+    void navigateHistory(int direction);
+    void completeCommand();
+    void resetTabMode();
+    void printPrompt();
+    void clearLine();
+    void moveCursorLeft(int positions);
+    void moveCursorRight(int positions);
+    bool isCommandMatch(const char *partial, const char *command);
+    void findMatchingCommands(const char *partial, char matches[][ST_NUM_COMMAND_CHARS + 1], int *matchCount);
 };
 
 #endif // ERRIEZ_SERIAL_TERMINAL_H_
