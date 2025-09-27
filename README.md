@@ -1,66 +1,66 @@
-# Serial Terminal library for Arduino
+# 🖥️ Serial Terminal library for Arduino
 
 This is a universal Serial Terminal library for Arduino to parse ASCII commands and arguments with enhanced features including command history, tab completion, and improved terminal editing capabilities.
 
 <img src="https://raw.githubusercontent.com/peterhtcui/ErriezSerialTerminal/enhanced-features/extras/ScreenshotSerialTerminal.png" alt="Serial Terminal" width="600">
 
 
-## Hardware
+## 🔧 Hardware
 
 Any Arduino hardware with a serial port, such as:
 
-Arduino:
-* UNO
-* Nano
-* Micro
-* Pro or Pro Mini
-* Mega or Mega2560
-* Leonardo
+**Arduino:**
+* 🟦 UNO
+* 🟦 Nano
+* 🟦 Micro
+* 🟦 Pro or Pro Mini
+* 🟦 Mega or Mega2560
+* 🟦 Leonardo
 
-Other targets:
-* DUE
-* ESP8266
-* ESP32
-* SAMD21
-* STM32F1
+**Other targets:**
+* 🔵 DUE
+* 🟠 ESP8266
+* 🟣 ESP32
+* 🟢 SAMD21
+* 🔴 STM32F1
 
 
-## Examples
+## 📚 Examples
 
 Arduino IDE | Examples | Erriez Serial Terminal |
 
-* [ErriezSerialTerminal](https://github.com/Erriez/ErriezSerialTerminal/blob/master/examples/ErriezSerialTerminal/ErriezSerialTerminal.ino) - Basic example
-* [ErriezSerialTerminal_EchoAndCallback](https://github.com/Erriez/ErriezSerialTerminal/blob/master/examples/ErriezSerialTerminal_EchoAndCallback/ErriezSerialTerminal_EchoAndCallback.ino) - Advanced example with character echoing
-* [ErriezSerialTerminal_Enhanced](https://github.com/Erriez/ErriezSerialTerminal/blob/master/examples/ErriezSerialTerminal_Enhanced/ErriezSerialTerminal_Enhanced.ino) - **NEW**: Demonstrates all enhanced features including command history and tab completion
+* 📖 [ErriezSerialTerminal](https://github.com/Erriez/ErriezSerialTerminal/blob/master/examples/ErriezSerialTerminal/ErriezSerialTerminal.ino) - Basic example
+* 🔄 [ErriezSerialTerminal_EchoAndCallback](https://github.com/Erriez/ErriezSerialTerminal/blob/master/examples/ErriezSerialTerminal_EchoAndCallback/ErriezSerialTerminal_EchoAndCallback.ino) - Advanced example with character echoing
+* ⭐ [ErriezSerialTerminal_Enhanced](https://github.com/Erriez/ErriezSerialTerminal/blob/master/examples/ErriezSerialTerminal_Enhanced/ErriezSerialTerminal_Enhanced.ino) - **NEW**: Demonstrates all enhanced features including command history and tab completion
 
 
-## Documentation
+## 📖 Documentation
 
-- [Online HTML](https://erriez.github.io/ErriezSerialTerminal)
-- [Download PDF](https://github.com/Erriez/ErriezSerialTerminal/raw/master/ErriezSerialTerminal.pdf)
+- 🌐 [Online HTML](https://erriez.github.io/ErriezSerialTerminal)
+- 📄 [Download PDF](https://github.com/Erriez/ErriezSerialTerminal/raw/master/ErriezSerialTerminal.pdf)
 
 
-## Enhanced Features
+## ✨ Enhanced Features
 
-**NEW in this version:**
+**🆕 NEW in this version:**
 
-* **Command History**: Navigate through previously entered commands using ↑/↓ arrow keys
-* **Tab Completion**: Auto-complete commands by pressing the Tab key
-* **Enhanced Terminal Editing**: Better backspace support and line editing capabilities
-* **Larger Buffer**: Increased from 32 to 256 bytes for longer commands and more arguments
-* **Extended Command Length**: Support for commands up to 12 characters (increased from 8)
-* **History Management**: Built-in functions to view and clear command history
+* 📜 **Command History**: Navigate through previously entered commands using ↑/↓ arrow keys
+* 🔄 **Tab Completion**: Auto-complete commands by pressing the Tab key
+* ✏️ **Enhanced Terminal Editing**: Better backspace support and line editing capabilities
+* 📈 **Larger Buffer**: Increased from 32 to 256 bytes for longer commands and more arguments
+* 📏 **Extended Command Length**: Support for commands up to 12 characters (increased from 8)
+* 🗂️ **History Management**: Built-in functions to view and clear command history
 
-**Terminal Features:**
-* Arrow key navigation (↑/↓) for command history
-* Tab key for command auto-completion
-* Enhanced backspace and delete key support
-* Improved line editing and cursor control
-* Character echoing for better terminal experience
+**🖥️ Terminal Features:**
+* ⬆️⬇️ Arrow key navigation for command history
+* ⌨️ Tab key for command auto-completion
+* ⌫ Enhanced backspace and delete key support
+* ✏️ Improved line editing and cursor control
+* 🔊 Character echoing for better terminal experience
 
-## Usage
+## 🚀 Usage
 
-**Initialization**
+**⚙️ Initialization**
 
 Create a Serial Terminal object. This can be initialized with optional newline and delimiter characters.
 
@@ -89,7 +89,7 @@ void setup()
     digitalWrite(LED_BUILTIN, LOW);
 }
 ```
-**Register new commands**
+**📝 Register new commands**
 
 Commands must be registered at startup with a corresponding ```callback handler``` .  This registers the command only, excluding arguments.
 
@@ -133,7 +133,7 @@ void cmdLedOff()
 }
 ```
 
-**Set default handler**
+**🎯 Set default handler**
 
 Optional: The default handler will be called when the command is not recognized.
 
@@ -154,7 +154,7 @@ void unknownCommand(const char *command)
 }
 ```
 
-**Read from serial port**
+**📡 Read from serial port**
 
 Read from the serial port in the main loop:
 
@@ -166,7 +166,7 @@ void loop()
 }
 ```
 
-**Get next argument**
+**➡️ Get next argument**
 
 Get pointer to next argument in serial receive buffer:
 
@@ -183,7 +183,7 @@ if (arg != NULL) {
 }
 ```
 
-**Get remaining characters**
+**📄 Get remaining characters**
 
 Get pointer to remaining characters in serial receive buffer:
 
@@ -198,7 +198,7 @@ if (arg != NULL) {
 }
 ```
 
-**Clear buffer**
+**🧹 Clear buffer**
 
 Optional: The serial receive buffer can be cleared with the following call:
 
@@ -207,7 +207,7 @@ term.clearBuffer();
 ```
 
 
-**Enable/Disable Character Echoing**
+**🔊 Enable/Disable Character Echoing**
 
 Optional: Allow for any entered charecters to be printed back to the Serial interface.
 This is useful for terminal programs like PuTTY.
@@ -218,7 +218,7 @@ term.setSerialEcho(true); //Enable Character Echoing
 ```
 
 
-**Set Post Command Handler**
+**⚡ Set Post Command Handler**
 
 Optional: Add a function to be called AFTER a command has been handled.
 
@@ -238,7 +238,7 @@ void setPostCommandHandler()
 }
 ```
 
-**Command History Management**
+**📜 Command History Management**
 
 The library now includes built-in command history functionality:
 
@@ -266,7 +266,7 @@ void cmdClearHistory()
 }
 ```
 
-**Enhanced Terminal Features**
+**✨ Enhanced Terminal Features**
 
 The library automatically provides these enhanced features when character echoing is enabled:
 
@@ -285,51 +285,51 @@ void setup()
 }
 ```
 
-## Library configuration
+## ⚙️ Library configuration
 
 ```SerialTerminal.h``` contains the following configuration macro's:
 
-**Enhanced Configuration:**
-* ```ST_RX_BUFFER_SIZE``` : The serial receive buffer size is now **256 Bytes** (increased from 32). This includes the command and arguments, excluding the ```'\0'``` character.
-* ```ST_NUM_COMMAND_CHARS```: The number of command characters is now **12 Bytes** (increased from 8), excluding the ```'\0'``` character.
+**📈 Enhanced Configuration:**
+* 📦 ```ST_RX_BUFFER_SIZE``` : The serial receive buffer size is now **256 Bytes** (increased from 32). This includes the command and arguments, excluding the ```'\0'``` character.
+* 📏 ```ST_NUM_COMMAND_CHARS```: The number of command characters is now **12 Bytes** (increased from 8), excluding the ```'\0'``` character.
 
-**New Configuration:**
-* ```ST_MAX_HISTORY_ENTRIES```: Maximum number of history entries (default: 20)
-* ```ST_HISTORY_ENTRY_SIZE```: Maximum length of each history entry (default: 128 characters)
+**🆕 New Configuration:**
+* 📜 ```ST_MAX_HISTORY_ENTRIES```: Maximum number of history entries (default: 20)
+* 📄 ```ST_HISTORY_ENTRY_SIZE```: Maximum length of each history entry (default: 128 characters)
 
-**Legacy Configuration (backward compatible):**
-* All original functionality is preserved
-* Default behavior remains unchanged for existing code
-
-
-## Library dependencies
-
-* None.
+**🔄 Legacy Configuration (backward compatible):**
+* ✅ All original functionality is preserved
+* ✅ Default behavior remains unchanged for existing code
 
 
-## Library installation
+## 📦 Library dependencies
+
+* ❌ None.
+
+
+## 📥 Library installation
 
 Please refer to the [Wiki](https://github.com/Erriez/ErriezArduinoLibrariesAndSketches/wiki) page.
 
 
-## Terminal Compatibility
+## 🖥️ Terminal Compatibility
 
 For the best experience with enhanced features, use a terminal emulator that supports:
 
-**Recommended Terminal Emulators:**
-* **PuTTY** (Windows) - Full support for arrow keys and Tab completion
-* **Terminal** (macOS) - Native support for all enhanced features
-* **GNOME Terminal** (Linux) - Complete ANSI escape sequence support
-* **Arduino IDE Serial Monitor** - Basic support (limited arrow key functionality)
+**💻 Recommended Terminal Emulators:**
+* 🪟 **PuTTY** (Windows) - Full support for arrow keys and Tab completion
+* 🍎 **Terminal** (macOS) - Native support for all enhanced features
+* 🐧 **GNOME Terminal** (Linux) - Complete ANSI escape sequence support
+* 🔧 **Arduino IDE Serial Monitor** - Basic support (limited arrow key functionality)
 
-**Enhanced Features Requirements:**
-* ANSI escape sequence support (for arrow key navigation)
-* Tab character handling (for command completion)
-* Character echoing capability
-* Proper line ending support (CR or LF)
+**✨ Enhanced Features Requirements:**
+* 🎯 ANSI escape sequence support (for arrow key navigation)
+* ⌨️ Tab character handling (for command completion)
+* 🔊 Character echoing capability
+* 📝 Proper line ending support (CR or LF)
 
-**Note:** The Arduino IDE Serial Monitor has limited support for arrow keys. For full enhanced functionality, use a dedicated terminal emulator like PuTTY.
+**⚠️ Note:** The Arduino IDE Serial Monitor has limited support for arrow keys. For full enhanced functionality, use a dedicated terminal emulator like PuTTY.
 
-## Other Arduino Libraries and Sketches from Erriez
+## 🔗 Other Arduino Libraries and Sketches from Erriez
 
-* [Erriez Libraries and Sketches](https://github.com/Erriez/ErriezArduinoLibrariesAndSketches)
+* 📚 [Erriez Libraries and Sketches](https://github.com/Erriez/ErriezArduinoLibrariesAndSketches)
