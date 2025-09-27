@@ -40,3 +40,11 @@
 # Arduino
 .arduino
 
+# Development files (for testing only, not part of library)
+# These files are kept locally for development but not distributed
+platformio.ini
+src/main.cpp
+quick-build.sh
+ESP32_README.md
+build.sh
+
