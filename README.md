@@ -1,6 +1,6 @@
 # Serial Terminal library for Arduino
 
-This is a universal Serial Terminal library for Arduino to parse ASCII commands and arguments.
+This is a universal Serial Terminal library for Arduino to parse ASCII commands and arguments with enhanced features including command history, tab completion, and improved terminal editing capabilities.
 
 ![Serial Terminal](https://raw.githubusercontent.com/Erriez/ErriezSerialTerminal/master/extras/ScreenshotSerialTerminal.png)
 
@@ -29,7 +29,9 @@ Other targets:
 
 Arduino IDE | Examples | Erriez Serial Terminal |
 
-* [ErriezSerialTerminal](https://github.com/Erriez/ErriezSerialTerminal/blob/master/examples/ErriezSerialTerminal/ErriezSerialTerminal.ino)
+* [ErriezSerialTerminal](https://github.com/Erriez/ErriezSerialTerminal/blob/master/examples/ErriezSerialTerminal/ErriezSerialTerminal.ino) - Basic example
+* [ErriezSerialTerminal_EchoAndCallback](https://github.com/Erriez/ErriezSerialTerminal/blob/master/examples/ErriezSerialTerminal_EchoAndCallback/ErriezSerialTerminal_EchoAndCallback.ino) - Advanced example with character echoing
+* [ErriezSerialTerminal_Enhanced](https://github.com/Erriez/ErriezSerialTerminal/blob/master/examples/ErriezSerialTerminal_Enhanced/ErriezSerialTerminal_Enhanced.ino) - **NEW**: Demonstrates all enhanced features including command history and tab completion
 
 
 ## Documentation
@@ -37,6 +39,24 @@ Arduino IDE | Examples | Erriez Serial Terminal |
 - [Online HTML](https://erriez.github.io/ErriezSerialTerminal)
 - [Download PDF](https://github.com/Erriez/ErriezSerialTerminal/raw/master/ErriezSerialTerminal.pdf)
 
+
+## Enhanced Features
+
+**NEW in this version:**
+
+* **Command History**: Navigate through previously entered commands using ↑/↓ arrow keys
+* **Tab Completion**: Auto-complete commands by pressing the Tab key
+* **Enhanced Terminal Editing**: Better backspace support and line editing capabilities
+* **Larger Buffer**: Increased from 32 to 256 bytes for longer commands and more arguments
+* **Extended Command Length**: Support for commands up to 12 characters (increased from 8)
+* **History Management**: Built-in functions to view and clear command history
+
+**Terminal Features:**
+* Arrow key navigation (↑/↓) for command history
+* Tab key for command auto-completion
+* Enhanced backspace and delete key support
+* Improved line editing and cursor control
+* Character echoing for better terminal experience
 
 ## Usage
 
@@ -218,12 +238,68 @@ void setPostCommandHandler()
 }
 ```
 
+**Command History Management**
+
+The library now includes built-in command history functionality:
+
+```c++
+void setup()
+{   
+    ...
+
+    // Add commands that can be accessed via history
+    term.addCommand("history", cmdShowHistory);
+    term.addCommand("clear", cmdClearHistory);
+}
+
+void cmdShowHistory()
+{
+    // Display command history
+    term.showHistory();
+}
+
+void cmdClearHistory()
+{
+    // Clear command history
+    term.clearHistory();
+    Serial.println(F("Command history cleared."));
+}
+```
+
+**Enhanced Terminal Features**
+
+The library automatically provides these enhanced features when character echoing is enabled:
+
+```c++
+void setup()
+{
+    ...
+    
+    // Enable character echoing for enhanced features
+    term.setSerialEcho(true);
+    
+    // Features automatically available:
+    // - Arrow key navigation (↑/↓) for command history
+    // - Tab completion for commands
+    // - Enhanced backspace and editing
+}
+```
+
 ## Library configuration
 
 ```SerialTerminal.h``` contains the following configuration macro's:
 
-* ```ST_RX_BUFFER_SIZE``` : The default serial receive buffer size is 32 Bytes. This includes the command and arguments, excluding the ```'\0'``` character.
-* ```ST_NUM_COMMAND_CHARS```: The default number of command characters is 8 Bytes, excluding the ```'\0'``` character.
+**Enhanced Configuration:**
+* ```ST_RX_BUFFER_SIZE``` : The serial receive buffer size is now **256 Bytes** (increased from 32). This includes the command and arguments, excluding the ```'\0'``` character.
+* ```ST_NUM_COMMAND_CHARS```: The number of command characters is now **12 Bytes** (increased from 8), excluding the ```'\0'``` character.
+
+**New Configuration:**
+* ```ST_MAX_HISTORY_ENTRIES```: Maximum number of history entries (default: 20)
+* ```ST_HISTORY_ENTRY_SIZE```: Maximum length of each history entry (default: 128 characters)
+
+**Legacy Configuration (backward compatible):**
+* All original functionality is preserved
+* Default behavior remains unchanged for existing code
 
 
 ## Library dependencies
@@ -235,6 +311,24 @@ void setPostCommandHandler()
 
 Please refer to the [Wiki](https://github.com/Erriez/ErriezArduinoLibrariesAndSketches/wiki) page.
 
+
+## Terminal Compatibility
+
+For the best experience with enhanced features, use a terminal emulator that supports:
+
+**Recommended Terminal Emulators:**
+* **PuTTY** (Windows) - Full support for arrow keys and Tab completion
+* **Terminal** (macOS) - Native support for all enhanced features
+* **GNOME Terminal** (Linux) - Complete ANSI escape sequence support
+* **Arduino IDE Serial Monitor** - Basic support (limited arrow key functionality)
+
+**Enhanced Features Requirements:**
+* ANSI escape sequence support (for arrow key navigation)
+* Tab character handling (for command completion)
+* Character echoing capability
+* Proper line ending support (CR or LF)
+
+**Note:** The Arduino IDE Serial Monitor has limited support for arrow keys. For full enhanced functionality, use a dedicated terminal emulator like PuTTY.
 
 ## Other Arduino Libraries and Sketches from Erriez
 
