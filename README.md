@@ -2,6 +2,10 @@
 
 This is a universal Serial Terminal library for Arduino to parse ASCII commands and arguments with enhanced features including command history, tab completion, and improved terminal editing capabilities.
 
+## 🆕 What's New in This Version
+
+This enhanced version introduces powerful new features that transform your Arduino serial terminal into a modern, user-friendly command interface. **Command History** allows you to navigate through previously entered commands using arrow keys (↑/↓), while **Tab Completion** provides intelligent command auto-completion when you press the Tab key. The library now supports **larger buffers** (256 bytes vs 32 bytes) and **extended command lengths** (12 characters vs 8 characters), enabling more complex commands and longer argument lists. Enhanced terminal editing includes improved backspace support, better cursor control, and automatic character echoing for a seamless terminal experience. Built-in **history management functions** let you view and clear command history programmatically. All these improvements maintain full backward compatibility with existing code, ensuring your current projects continue to work without any modifications while gaining access to these powerful new capabilities.
+
 <img src="https://raw.githubusercontent.com/peterhtcui/ErriezSerialTerminal/enhanced-features/extras/ScreenshotSerialTerminal.png" alt="Serial Terminal" width="600">
 
 
