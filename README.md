@@ -2,7 +2,7 @@
 
 This is a universal Serial Terminal library for Arduino to parse ASCII commands and arguments with enhanced features including command history, tab completion, and improved terminal editing capabilities.
 
-![Serial Terminal](https://raw.githubusercontent.com/peterhtcui/ErriezSerialTerminal/enhanced-features/extras/ScreenshotSerialTerminal.png)
+<img src="https://raw.githubusercontent.com/peterhtcui/ErriezSerialTerminal/enhanced-features/extras/ScreenshotSerialTerminal.png" alt="Serial Terminal" width="600">
 
 
 ## Hardware
